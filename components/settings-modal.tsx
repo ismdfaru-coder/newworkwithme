@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
@@ -47,6 +48,13 @@ const settingsNavItems = [
 ]
 
 export function SettingsModal({ open, onOpenChange, activeTab, onTabChange }: SettingsModalProps) {
+  const router = useRouter()
+
+  const handleSignOut = () => {
+    onOpenChange(false)
+    router.push("/")
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="flex h-[600px] max-w-4xl gap-0 p-0" aria-describedby={undefined}>
@@ -99,7 +107,7 @@ export function SettingsModal({ open, onOpenChange, activeTab, onTabChange }: Se
           </div>
 
           <div className="p-6">
-            {activeTab === "account" && <AccountContent />}
+            {activeTab === "account" && <AccountContent onSignOut={handleSignOut} />}
             {activeTab === "settings" && <SettingsContent />}
             {activeTab === "usage" && <UsageContent />}
             {activeTab === "cloud" && <CloudBrowserContent />}
@@ -117,7 +125,7 @@ export function SettingsModal({ open, onOpenChange, activeTab, onTabChange }: Se
   )
 }
 
-function AccountContent() {
+function AccountContent({ onSignOut }: { onSignOut: () => void }) {
   return (
     <div className="space-y-6">
       {/* Profile Section */}
@@ -135,7 +143,7 @@ function AccountContent() {
           <Button variant="outline" size="icon">
             <UserCog className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" onClick={onSignOut}>
             <LogOut className="h-4 w-4" />
           </Button>
         </div>
