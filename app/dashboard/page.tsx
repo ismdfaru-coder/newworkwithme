@@ -40,7 +40,7 @@ export default function DashboardPage() {
           <textarea
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Assign a task or ask anything"
+            placeholder="How can I help you Today."
             className="min-h-[60px] w-full resize-none bg-transparent text-base outline-none placeholder:text-muted-foreground"
             rows={2}
           />
