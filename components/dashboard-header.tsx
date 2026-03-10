@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Bell, Sparkles, ChevronDown } from "lucide-react"
 import {
@@ -17,6 +18,12 @@ interface DashboardHeaderProps {
 }
 
 export function DashboardHeader({ onOpenSettings, showVersionDropdown = true, title }: DashboardHeaderProps) {
+  const router = useRouter()
+
+  const handleSignOut = () => {
+    router.push("/")
+  }
+
   return (
     <header className="flex h-14 items-center justify-between border-b border-border bg-background px-4">
       <div className="flex items-center gap-2">
@@ -61,7 +68,7 @@ export function DashboardHeader({ onOpenSettings, showVersionDropdown = true, ti
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => onOpenSettings("account")}>Account</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onOpenSettings("settings")}>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Sign out</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSignOut}>Sign out</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
