@@ -51,6 +51,7 @@ export function SettingsModal({ open, onOpenChange, activeTab, onTabChange }: Se
   const router = useRouter()
 
   const handleSignOut = () => {
+    console.log("[v0] Sign out clicked")
     onOpenChange(false)
     router.push("/")
   }
@@ -126,6 +127,11 @@ export function SettingsModal({ open, onOpenChange, activeTab, onTabChange }: Se
 }
 
 function AccountContent({ onSignOut }: { onSignOut: () => void }) {
+  const handleClick = () => {
+    console.log("[v0] LogOut button clicked in AccountContent")
+    onSignOut()
+  }
+  
   return (
     <div className="space-y-6">
       {/* Profile Section */}
@@ -143,7 +149,7 @@ function AccountContent({ onSignOut }: { onSignOut: () => void }) {
           <Button variant="outline" size="icon">
             <UserCog className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={onSignOut}>
+          <Button variant="outline" size="icon" onClick={handleClick}>
             <LogOut className="h-4 w-4" />
           </Button>
         </div>
