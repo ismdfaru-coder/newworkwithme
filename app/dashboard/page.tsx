@@ -39,7 +39,7 @@ export default function DashboardPage() {
 
       {/* Main Heading */}
       <h1 className="mb-12 text-center font-serif text-4xl md:text-5xl">
-        What can I do for you?
+        What do you want to Know?
       </h1>
 
       {/* Input Area */}
