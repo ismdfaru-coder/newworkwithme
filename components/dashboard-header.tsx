@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Bell, Sparkles, ChevronDown } from "lucide-react"
+import { Bell, ChevronDown } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -51,11 +51,6 @@ export function DashboardHeader({ onOpenSettings, showVersionDropdown = true, ti
           <Bell className="h-4 w-4" />
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
         </Button>
-
-        <div className="flex items-center gap-1.5 text-sm">
-          <Sparkles className="h-4 w-4 text-teal-500" />
-          <span className="font-medium">1,300</span>
-        </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

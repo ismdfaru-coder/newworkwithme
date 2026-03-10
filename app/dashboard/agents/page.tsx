@@ -1,116 +1,202 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { 
-  Monitor, 
-  Sparkles, 
-  QrCode,
+  Plus, 
+  ArrowUp,
+  Presentation, 
+  Globe, 
+  Smartphone, 
+  Paintbrush,
+  Smile,
+  Mic,
+  X,
 } from "lucide-react"
 
 export default function AgentsPage() {
-  const features = [
-    {
-      icon: QrCode,
-      title: "Brand-consistent AI identity",
-      description: "Trained on your workflows, integrated with your tools.",
-    },
-    {
-      icon: Monitor,
-      title: "Persistent memory & computer",
-      description: "24/7 cloud assistant that keeps full context and memory.",
-    },
-    {
-      icon: Sparkles,
-      title: "Custom skills",
-      description: "Equip your assistant with expert knowledge in specific areas.",
-    },
+  const [inputValue, setInputValue] = useState("")
+  const [showToolsBar, setShowToolsBar] = useState(true)
+
+  const quickActions = [
+    { icon: Presentation, label: "Create slides" },
+    { icon: Globe, label: "Build website" },
+    { icon: Smartphone, label: "Develop apps" },
+    { icon: Paintbrush, label: "Design" },
   ]
 
   return (
-    <div className="flex flex-col items-center px-4 py-8">
+    <div className="flex h-full flex-col items-center justify-center px-4">
       <h1 className="mb-8 text-xl font-semibold">Agents</h1>
 
-      {/* Messaging Apps Illustration */}
-      <div className="relative mb-8 h-56 w-full max-w-lg">
-        {/* Line messaging icon */}
-        <div className="absolute left-[30%] top-0 flex h-14 w-14 items-center justify-center rounded-full bg-[#06C755] text-white shadow-lg">
-          <span className="text-xs font-bold">LINE</span>
-        </div>
-        
-        {/* Messenger icon */}
-        <div className="absolute right-[25%] top-2 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#00B2FF] to-[#006AFF] text-white shadow-lg">
-          <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.898 1.438 5.482 3.688 7.17v3.587l3.425-1.89c.916.254 1.89.39 2.887.39 5.523 0 10-4.145 10-9.257S17.523 2 12 2z"/>
-          </svg>
-        </div>
-        
-        {/* Telegram icon */}
-        <div className="absolute left-[12%] top-[35%] flex h-14 w-14 items-center justify-center rounded-full bg-[#229ED9] text-white shadow-lg">
-          <Send className="h-6 w-6" />
-        </div>
-        
-        {/* WhatsApp icon */}
-        <div className="absolute right-[12%] top-[30%] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg">
-          <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-        </div>
+      {/* Main Heading */}
+      <h2 className="mb-12 text-center font-serif text-4xl md:text-5xl">
+        What can I do for you?
+      </h2>
 
-        {/* Central WorkwithMe card */}
-        <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2">
-          <div className="rounded-2xl bg-background p-4 shadow-xl ring-1 ring-border">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background">
-                <WorkwithMeLogo />
-              </div>
-              <span className="font-semibold">WorkwithMe</span>
-              <svg className="h-4 w-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+      {/* Input Area */}
+      <div className="w-full max-w-3xl">
+        <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+          <textarea
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Assign a task or ask anything"
+            className="min-h-[60px] w-full resize-none bg-transparent text-base outline-none placeholder:text-muted-foreground"
+            rows={2}
+          />
+
+          <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground">
+                <Plus className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground">
+                <HandIcon />
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground">
+                <SettingsIcon />
+              </Button>
             </div>
-            <div className="mt-3 space-y-1.5">
-              <div className="h-2 w-36 rounded bg-muted" />
-              <div className="h-2 w-28 rounded bg-muted" />
+
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground">
+                <Smile className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-muted-foreground hover:text-foreground">
+                <Mic className="h-4 w-4" />
+              </Button>
+              <Button
+                size="icon"
+                className="h-10 w-10 rounded-full bg-muted text-muted-foreground"
+                disabled={!inputValue.trim()}
+              >
+                <ArrowUp className="h-4 w-4" />
+              </Button>
             </div>
           </div>
         </div>
 
-        {/* Phone frame behind */}
-        <div className="absolute left-1/2 top-[40%] -z-10 h-40 w-48 -translate-x-1/2 -translate-y-1/2 rounded-3xl border-4 border-muted bg-muted/30" />
+        {/* Tools Connection Bar */}
+        {showToolsBar && (
+          <div className="mt-2 flex items-center justify-between rounded-lg border border-border bg-card px-4 py-2">
+            <div className="flex items-center gap-2">
+              <ConnectIcon />
+              <span className="text-sm text-muted-foreground">Connect your tools to WorkwithMe</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
+                <ToolIcon type="chatgpt" />
+                <ToolIcon type="gmail" />
+                <ToolIcon type="sheets" />
+                <ToolIcon type="slack" />
+                <ToolIcon type="github" />
+                <ToolIcon type="notion" />
+              </div>
+              <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground" onClick={() => setShowToolsBar(false)}>
+                <X className="h-3 w-3" />
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Quick Actions */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          {quickActions.map((action) => (
+            <Button
+              key={action.label}
+              variant="outline"
+              className="gap-2 rounded-full border-border bg-background hover:bg-muted"
+            >
+              <action.icon className="h-4 w-4" />
+              {action.label}
+            </Button>
+          ))}
+          <Button variant="outline" className="rounded-full border-border bg-background hover:bg-muted">
+            More
+          </Button>
+        </div>
       </div>
-
-      {/* Deploy Section */}
-      <h2 className="mb-8 text-center font-serif text-3xl">
-        Deploy your agent for business
-      </h2>
-
-      {/* Features Grid */}
-      <div className="grid w-full max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {features.map((feature) => (
-          <Card key={feature.title} className="border-border">
-            <CardContent className="p-6">
-              <feature.icon className="mb-4 h-6 w-6 text-muted-foreground" />
-              <h3 className="mb-2 font-semibold">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
     </div>
   )
 }
 
-function WorkwithMeLogo() {
+function HandIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M12 3C10.5 3 9.5 4 9 5C8.5 4.5 7.5 4 6 4C4 4 2 5.5 2 8C2 11 5 14 9 17C10 17.7 11 18 12 18C13 18 14 17.7 15 17C19 14 22 11 22 8C22 5.5 20 4 18 4C16.5 4 15.5 4.5 15 5C14.5 4 13.5 3 12 3Z"
-        fill="currentColor"
-      />
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2" />
+      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
+      <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
     </svg>
   )
 }
 
+function SettingsIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  )
+}
 
+function ConnectIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  )
+}
+
+function ToolIcon({ type }: { type: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    chatgpt: (
+      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#10a37f]">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+          <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.6 8.3829l2.02-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.1408 1.6465 4.4708 4.4708 0 0 1 .4246 3.0137zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+        </svg>
+      </div>
+    ),
+    gmail: (
+      <div className="flex h-5 w-5 items-center justify-center rounded text-red-500">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+        </svg>
+      </div>
+    ),
+    sheets: (
+      <div className="flex h-5 w-5 items-center justify-center rounded text-green-600">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.385 1.848H4.615A2.769 2.769 0 0 0 1.846 4.62v14.77a2.769 2.769 0 0 0 2.769 2.769h14.77a2.769 2.769 0 0 0 2.769-2.769V4.62a2.769 2.769 0 0 0-2.769-2.77zM7.385 18.465H4.615v-2.77h2.77zm0-4.616H4.615v-2.77h2.77zm0-4.615H4.615v-2.77h2.77zm5.538 9.231H8.308v-2.77h4.615zm0-4.616H8.308v-2.77h4.615zm0-4.615H8.308v-2.77h4.615zm6.462 9.231h-4.616v-2.77h4.616zm0-4.616h-4.616v-2.77h4.616zm0-4.615h-4.616v-2.77h4.616z"/>
+        </svg>
+      </div>
+    ),
+    slack: (
+      <div className="flex h-5 w-5 items-center justify-center">
+        <svg width="14" height="14" viewBox="0 0 24 24">
+          <path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/>
+          <path fill="#36C5F0" d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/>
+          <path fill="#2EB67D" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/>
+          <path fill="#ECB22E" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+        </svg>
+      </div>
+    ),
+    github: (
+      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-black text-white">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </div>
+    ),
+    notion: (
+      <div className="flex h-5 w-5 items-center justify-center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.98-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.746c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.449.327s0 .84-1.168.84l-3.22.186c-.094-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+        </svg>
+      </div>
+    ),
+  }
+  return icons[type] || null
+}

@@ -30,7 +30,7 @@ export function DashboardSidebar({ collapsed, onToggle, onOpenSettings, onOpenSe
   const pathname = usePathname()
 
   const mainNavItems = [
-    { icon: PenSquare, label: "New task", href: "/dashboard", shortcut: null, action: null },
+    { icon: PenSquare, label: "New Chat", href: "/dashboard", shortcut: null, action: null },
     { icon: Bot, label: "Agents", href: "/dashboard/agents", shortcut: null, action: null },
     { icon: Search, label: "Search", href: null, shortcut: "CtrlK", action: onOpenSearch },
     { icon: Library, label: "Library", href: "/dashboard/library", shortcut: null, action: null },
