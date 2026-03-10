@@ -30,13 +30,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-full flex-col items-center justify-center px-4">
-      {/* Trial Banner */}
-      <div className="mb-8 flex items-center rounded-full border border-border bg-background px-4 py-2 text-sm">
-        <span className="text-muted-foreground">Free plan</span>
-        <span className="mx-2 text-border">|</span>
-        <button className="font-medium text-teal-600 hover:underline">Start free trial</button>
-      </div>
-
       {/* Main Heading */}
       <h1 className="mb-12 text-center font-serif text-4xl md:text-5xl">
         What do you want to Know?

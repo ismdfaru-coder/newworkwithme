@@ -39,7 +39,7 @@ export function DashboardSidebar({ collapsed, onToggle, onOpenSettings, onOpenSe
   return (
     <aside
       className={cn(
-        "flex h-full flex-col border-r border-border bg-background transition-all duration-300",
+        "flex h-full flex-col border-r border-border bg-white transition-all duration-300",
         collapsed ? "w-16" : "w-64"
       )}
     >
